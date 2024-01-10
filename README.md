@@ -1,2 +1,2 @@
-# my-project
-Template repository for web-based experiment projects.
+# 245B-project
+Project description
