@@ -1,2 +1,2 @@
-# 245B-project
-data decription or something :)
+# 245B-project/data
+Data description goes here 
