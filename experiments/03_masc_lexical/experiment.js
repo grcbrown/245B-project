@@ -1,6 +1,9 @@
 const jsPsych = initJsPsych({
     show_progress_bar: true,
-    auto_update_progress_bar: false
+    auto_update_progress_bar: false,
+    on_finish: function(data) {
+        proliferate.submit({data});
+      }
   });
 
 let timeline = []; //Empty timeline to which we will add trials
