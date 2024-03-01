@@ -96,7 +96,7 @@ let trial_objects = [
         "triplet_id": 12
     },
     {
-        "stimulus": ['<p style="font-weight:bold;">'+"I bought a amber shirt last Friday."+'</p>'+"<br><br>How masculine is the speaker of this sentence?<br><br>"],
+        "stimulus": ['<p style="font-weight:bold;">'+"I bought an amber shirt last Friday."+'</p>'+"<br><br>How masculine is the speaker of this sentence?<br><br>"],
         "expected": "non_masc", 
         "comp": "What color shirt did the speaker purchase?<br><br>",
         "comp_button": ['Maroon','Periwinkle','Amber'],

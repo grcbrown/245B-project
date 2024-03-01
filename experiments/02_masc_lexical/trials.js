@@ -184,7 +184,7 @@ let trial_objects = [
         "triplet_id": 23
     },
     {
-        "stimulus": ['<p style="font-weight:bold;">'+"I think that, um, article was well-researched."+'</p>'+"<br><br>How masculine is the speaker of this sentence?<br><br>"],
+        "stimulus": ['<p style="font-weight:bold;">'+"I think that article was, um, well-researched."+'</p>'+"<br><br>How masculine is the speaker of this sentence?<br><br>"],
         "expected": "masc", 
         "comp": "What did the speaker think was well-researched?<br><br>",
         "comp_button": ['The book','The show','The article'],

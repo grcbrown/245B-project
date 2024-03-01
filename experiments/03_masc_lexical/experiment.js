@@ -11,7 +11,7 @@ let timeline = []; //Empty timeline to which we will add trials
 //IRB//
 const irb = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: '<p><font size="3">DESCRIPTION: You are invited to participate in a research study. Its general purpose is to understand how people perceive written stimuli. You will be asked to read a series of sentences and provide judgments about the social characteristics of the speakers of these sentences. <br><br>RISKS AND BENEFITS: There are no known risks, costs, or discomforts in this study and this judgment is based on a large body of experience with the same or similar procedures with people of similar ages, sex, origins, etc.  We cannot and do not guarantee or promise that you will receive any benefits from this study. You will help us to understand how people perceive written stimuli.<br><br>PAYMENTS: You will be paid at the posted rate. <br><br>SUBJECT RIGHTS: If you have read this form and have decided to participate in this project, please understand your participation is voluntary and you have the right to withdraw your consent or discontinue participation at any time without penalty or loss of benefits to which you are otherwise entitled. You have the right to refuse to answer particular questions. Your individual privacy will be maintained in all published and written data resulting from the study. <br><br> CONTACT INFORMATION: If you have any questions, concerns or complaints about this research study, its procedures, risks and benefits, you should contact the Protocol Director Meghan Sumner at (650)-725-9336. If you are not satisfied with how this study is being conducted, or if you have any concerns, complaints, or general questions about the research or your rights as a participant, please contact the Stanford Institutional Review Board (IRB) to speak to someone independent of the research team at (650)-723-2480 or toll free at 1-866-680-2906. You can also write to the Stanford IRB, Stanford University, 3000 El Camino Real, Five Palo Alto Square, 4th Floor, Palo Alto, CA 94306 USA.<br><br>WAIVER OF DOCUMENTATION: If you agree to participate in this research, please continue on to the next page.</font></p>',
+    stimulus: '<p><font size="3">DESCRIPTION: You are invited to participate in a research study. Its general purpose is to understand how people perceive written stimuli. You will be asked to read a series of sentences and provide judgments about the social characteristics of the speakers of these sentences. <br><br>RISKS AND BENEFITS: There are no known risks, costs, or discomforts in this study and this judgment is based on a large body of experiments with the same or similar procedures with people of similar ages, sex, origins, etc.  We cannot and do not guarantee or promise that you will receive any benefits from this study. You will help us to understand how people perceive written stimuli.<br><br>PAYMENTS: You will be paid at the posted rate. <br><br>SUBJECT RIGHTS: If you have read this form and have decided to participate in this project, please understand your participation is voluntary and you have the right to withdraw your consent or discontinue participation at any time without penalty or loss of benefits to which you are otherwise entitled. You have the right to refuse to answer particular questions. Your individual privacy will be maintained in all published and written data resulting from the study. <br><br> CONTACT INFORMATION: If you have any questions, concerns or complaints about this research study, its procedures, risks and benefits, you should contact the Protocol Director Meghan Sumner at (650)-725-9336. If you are not satisfied with how this study is being conducted, or if you have any concerns, complaints, or general questions about the research or your rights as a participant, please contact the Stanford Institutional Review Board (IRB) to speak to someone independent of the research team at (650)-723-2480 or toll free at 1-866-680-2906. You can also write to the Stanford IRB, Stanford University, 3000 El Camino Real, Five Palo Alto Square, 4th Floor, Palo Alto, CA 94306 USA.<br><br>WAIVER OF DOCUMENTATION: If you agree to participate in this research, please continue on to the next page.</font></p>',
     choices: ['Continue']
 };
 
@@ -21,7 +21,7 @@ timeline.push(irb);
 //INSTRUCTIONS//
 const instructions = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "<p><font size='3'>In this experiment, you will read a series of sentences. Each sentence has been produced by a different speaker. After reading each sentence, you will be asked to rate the social characteristics of its speaker. To rate the social characteristics of a speaker, click along the scale. After providing your rating, you can proceed to the next trial by clicking 'Continue'. Try to respond as quickly as you can. <br>When you're ready to begin, click ‘Start’.</font></p>",
+    stimulus: "<p><font size='3'>In this experiment, you will read a series of sentences. Each sentence has been produced by a different speaker. After reading each sentence, you will be asked to rate the social characteristics of its speaker. To rate the social characteristics of a speaker, click along the scale. After providing your rating, you can proceed to the next trial by clicking 'Continue'. Some trials will have comprehension questions. To complete these, click on the button with the correct answer. <br><br>When you're ready to begin, click ‘Start’.</font></p>",
     choices: ['Start']
 };
 
@@ -31,13 +31,12 @@ timeline.push(instructions);
 let trial_objects_shuffle = jsPsych.randomization.shuffle(trial_objects);
 for (let i = 0; i < trial_objects_shuffle.length; i++) {
     const trial = {
-        type: jsPsychHtmlSliderResponse,
+        type: jsPsychHtmlVasResponse,
         labels: ["Not at all masculine", "Extremely masculine"],
         stimulus: trial_objects_shuffle[i].stimulus,
-        min: 0,
-        max: 100,
-        slider_start: 50,
-        slider_width: 500,
+        scale_width: 500,
+        ticks: false,
+        required: true,
         response_ends_trial: true,
         trial_duration: 10000,
         data: {
@@ -72,7 +71,7 @@ for (let i = 0; i < trial_objects_shuffle.length; i++) {
 //INSTRUCTIONS//
 const instructions_SRQ = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: "<p><font size='3'>You have completed the experimental trials. You will now complete a short questionnarie. During the questionnaire, you will see a series of statements alongside a slider. Click along the slider to indicate how much you agree or disagree with the statement. Upon completion of the questionnaire, you will be asked to fill out an optional demographic survey. <br><br>When you're ready to begin the questionnaire, click ‘Continue’.</font></p>",
+    stimulus: "<p><font size='3'>You have completed the experimental trials. You will now complete a short questionnaire. During the questionnaire, you will see a series of statements alongside a scale. Click along the scale to indicate how much you agree or disagree with the statement. Upon completion of the questionnaire, you will be asked to fill out an optional demographic survey. <br><br>When you're ready to begin the questionnaire, click ‘Continue’.</font></p>",
     choices: ['Continue']
 };
 
@@ -84,15 +83,14 @@ let gender_array = create_tv_array(gender_objects);
 const gender_ideology = {
     timeline: [
         {
-            type: jsPsychHtmlSliderResponse,
+            type: jsPsychHtmlVasResponse,
             labels: ["Completely Disagree", "Completely Agree"],
             stimulus: jsPsych.timelineVariable('stimulus'),
-            min: 0,
-            max: 100, 
-            slider_start: 50,
-            slider_width: 500,
-            trial_duration: 10000,
+            scale_width: 500,
+            ticks: false,
+            required: true,
             response_ends_trial: true,
+            trial_duration: 10000,
             data: {
                 coding: jsPsych.timelineVariable('coding')
             },
