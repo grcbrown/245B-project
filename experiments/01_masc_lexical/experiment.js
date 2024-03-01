@@ -1,9 +1,6 @@
 const jsPsych = initJsPsych({
     show_progress_bar: true,
-    auto_update_progress_bar: false,
-    on_finish: function () {
-        jsPsych.data.displayData('csv');
-      }
+    auto_update_progress_bar: false
   });
 
 let timeline = []; //Empty timeline to which we will add trials
