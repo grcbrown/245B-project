@@ -48,7 +48,7 @@ for (let i = 0; i < trial_objects_shuffle.length; i++) {
         }
     }
     timeline.push(trial)
-    if (Math.random() < 0.33) {
+    if (trial_objects_shuffle[i].triplet_id < 9) {
          let attn_info = {
              type: jsPsychHtmlMultiResponse,
              stimulus: trial_objects_shuffle[i].comp,
