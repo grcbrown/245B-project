@@ -255,7 +255,7 @@ var jsPsychHtmlVasResponse = (function (jspsych) {
 
       // hide stimulus if stimulus_duration is set
       if (trial.stimulus_duration !== null) {
-        jspsych.pluginAPI.setTimeout(function () {
+        jsPsych.pluginAPI.setTimeout(function () {
           var stim = document.getElementById("jspsych-html-vas-response-stimulus");
           stim.style.visibility = "hidden";
         }, trial.stimulus_duration);
@@ -263,7 +263,7 @@ var jsPsychHtmlVasResponse = (function (jspsych) {
 
       // end trial if trial_duration is set
       if (trial.trial_duration !== null) {
-        jspsych.pluginAPI.setTimeout(end_trial, trial.trial_duration);
+        jsPsych.pluginAPI.setTimeout(end_trial, trial.trial_duration);
       }
 
       var startTime = performance.now();
